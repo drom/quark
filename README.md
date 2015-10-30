@@ -1,6 +1,6 @@
-# quark
+# Stack HAT
 ## Introduction
-Stack CPU with 16 instructions.
+Simple stack CPU using Head-and-tail instruction format, described in [Hedi01](http://www.cs.berkeley.edu/~krste/papers/hat-cases2001.pdf)
 
 ![ISA](https://rawgit.com/drom/quark/master/isa.svg)
 
