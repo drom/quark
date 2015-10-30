@@ -18,7 +18,7 @@ Stack CPU with 16 instructions.
 | 7 | CALL  | subroutine call     |      |                           | ( addr -- )           |
 | 8 | LOAD  | load from memory    | 4    | i8, i16, i32, u8, u16,... | ( addr -- data )      |
 | 9 | PICK  | copy Nth DS element | 4    | element number            | ( -- n )              |
-| A |       |                     |      |                           |                       |
+| A | DUP   | copy DS top         |      |                           | ( n -- n n )          |
 | B | R>    | move RS top -> DS   |      |                           | ( -- n )              | ( n -- )
 | C | STORE | store to the memory | 4    | i8, i16, i32              | ( data addr -- addr ) |
 | D | ALU   |                     | 4    | operation: + - * >> <<    | ( a b -- c )          |
