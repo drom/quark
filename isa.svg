@@ -296,6 +296,39 @@
            sodipodi:role="line">-</tspan></text>
     </g>
     <g
+       id="g4726"
+       transform="translate(8,-120)">
+      <rect
+         y="932.36218"
+         x="264"
+         height="112"
+         width="112"
+         id="rect2987-9-5-9"
+         style="color:#000000;fill:#ff7300;fill-opacity:0.21544716;fill-rule:nonzero;stroke:#ff8100;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3192-7-01-9"
+         y="996.36218"
+         x="320"
+         style="font-size:24px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="996.36218"
+           x="320"
+           id="tspan3194-7-7-8"
+           sodipodi:role="line">DUP</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4413-7"
+         y="956.36218"
+         x="272"
+         style="font-size:24px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="956.36218"
+           x="272"
+           id="tspan4415-13"
+           sodipodi:role="line">+</tspan></text>
+    </g>
+    <g
        id="g4656"
        transform="translate(-240,-120)">
       <rect
