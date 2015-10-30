@@ -296,39 +296,6 @@
            sodipodi:role="line">-</tspan></text>
     </g>
     <g
-       id="g4726"
-       transform="translate(8,-120)">
-      <rect
-         y="932.36218"
-         x="264"
-         height="112"
-         width="112"
-         id="rect2987-9-5-9"
-         style="color:#000000;fill:#ff7300;fill-opacity:0.21544716;fill-rule:nonzero;stroke:#ff8100;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      <text
-         sodipodi:linespacing="125%"
-         id="text3192-7-01-9"
-         y="996.36218"
-         x="320"
-         style="font-size:24px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-         xml:space="preserve"><tspan
-           y="996.36218"
-           x="320"
-           id="tspan3194-7-7-8"
-           sodipodi:role="line">DUP</tspan></text>
-      <text
-         sodipodi:linespacing="125%"
-         id="text4413-7"
-         y="956.36218"
-         x="272"
-         style="font-size:24px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Sans"
-         xml:space="preserve"><tspan
-           y="956.36218"
-           x="272"
-           id="tspan4415-13"
-           sodipodi:role="line">+</tspan></text>
-    </g>
-    <g
        id="g4656"
        transform="translate(-240,-120)">
       <rect
@@ -556,7 +523,7 @@
          y="564.36218"
          x="88"
          id="tspan3194-7-67"
-         sodipodi:role="line">00__</tspan></text>
+         sodipodi:role="line">..00</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3192-7-6-2"
@@ -567,7 +534,7 @@
          y="564.36218"
          x="208"
          id="tspan3194-7-67-8"
-         sodipodi:role="line">01__</tspan></text>
+         sodipodi:role="line">..01</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3192-7-6-4"
@@ -578,7 +545,7 @@
          y="564.36218"
          x="328"
          id="tspan3194-7-67-3"
-         sodipodi:role="line">10__</tspan></text>
+         sodipodi:role="line">..10</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3192-7-6-3"
@@ -589,7 +556,7 @@
          y="564.36218"
          x="448"
          id="tspan3194-7-67-5"
-         sodipodi:role="line">11__</tspan></text>
+         sodipodi:role="line">..11</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3192-7-6-0"
@@ -601,7 +568,7 @@
          y="24"
          x="-628.36218"
          id="tspan3194-7-67-2"
-         sodipodi:role="line">__00</tspan></text>
+         sodipodi:role="line">00..</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3192-7-6-0-9"
@@ -613,7 +580,7 @@
          y="24"
          x="-740.36218"
          id="tspan3194-7-67-2-3"
-         sodipodi:role="line">__01</tspan></text>
+         sodipodi:role="line">01..</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3192-7-6-0-5"
@@ -625,7 +592,7 @@
          y="24"
          x="-860.36218"
          id="tspan3194-7-67-2-8"
-         sodipodi:role="line">__10</tspan></text>
+         sodipodi:role="line">10..</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3192-7-6-0-7"
@@ -637,7 +604,7 @@
          y="24"
          x="-988.36218"
          id="tspan3194-7-67-2-6"
-         sodipodi:role="line">__11</tspan></text>
+         sodipodi:role="line">11..</tspan></text>
     <g
        id="g4694-5"
        transform="translate(16,-104)">
@@ -701,7 +668,7 @@
            sodipodi:role="line">LOAD</tspan></text>
       <path
          transform="translate(-128,492.36218)"
-         d="m 288,280 a 8,8 0 1 1 -16,0 8,8 0 1 1 16,0 z"
+         d="m 288,280 c 0,4.41828 -3.58172,8 -8,8 -4.41828,0 -8,-3.58172 -8,-8 0,-4.41828 3.58172,-8 8,-8 4.41828,0 8,3.58172 8,8 z"
          sodipodi:ry="8"
          sodipodi:rx="8"
          sodipodi:cy="280"
@@ -739,7 +706,7 @@
            id="tspan3194-7-7-8-9-2-1-0"
            sodipodi:role="line">STORE</tspan></text>
       <path
-         d="m 288,280 a 8,8 0 1 1 -16,0 8,8 0 1 1 16,0 z"
+         d="m 288,280 c 0,4.41828 -3.58172,8 -8,8 -4.41828,0 -8,-3.58172 -8,-8 0,-4.41828 3.58172,-8 8,-8 4.41828,0 8,3.58172 8,8 z"
          sodipodi:ry="8"
          sodipodi:rx="8"
          sodipodi:cy="280"
