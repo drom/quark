@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="quark_isa.svg">
+   sodipodi:docname="isa.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.153686"
-     inkscape:cx="272.50813"
-     inkscape:cy="281.8867"
+     inkscape:zoom="1.7148438"
+     inkscape:cx="256"
+     inkscape:cy="256"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -700,8 +700,8 @@
            id="tspan3194-7-7-8-9-2-1"
            sodipodi:role="line">LOAD</tspan></text>
       <path
-         transform="translate(-48,452.36218)"
-         d="m 288,280 c 0,4.41828 -3.58172,8 -8,8 -4.41828,0 -8,-3.58172 -8,-8 0,-4.41828 3.58172,-8 8,-8 4.41828,0 8,3.58172 8,8 z"
+         transform="translate(-128,492.36218)"
+         d="m 288,280 a 8,8 0 1 1 -16,0 8,8 0 1 1 16,0 z"
          sodipodi:ry="8"
          sodipodi:rx="8"
          sodipodi:cy="280"
@@ -739,7 +739,7 @@
            id="tspan3194-7-7-8-9-2-1-0"
            sodipodi:role="line">STORE</tspan></text>
       <path
-         d="m 288,280 c 0,4.41828 -3.58172,8 -8,8 -4.41828,0 -8,-3.58172 -8,-8 0,-4.41828 3.58172,-8 8,-8 4.41828,0 8,3.58172 8,8 z"
+         d="m 288,280 a 8,8 0 1 1 -16,0 8,8 0 1 1 16,0 z"
          sodipodi:ry="8"
          sodipodi:rx="8"
          sodipodi:cy="280"
@@ -747,7 +747,7 @@
          id="path4350-3"
          style="color:#000000;fill:#0000ff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.77165353;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
          sodipodi:type="arc"
-         transform="translate(-48,708.36218)" />
+         transform="translate(-128,748.36218)" />
       <text
          sodipodi:linespacing="125%"
          id="text4413-8"
@@ -768,8 +768,8 @@
          y="940.36218" />
     </g>
     <rect
-       y="812.36218"
-       x="232"
+       y="820.36218"
+       x="248"
        height="16"
        width="8"
        id="rect2987-98-7-5-4-6-7-73"
