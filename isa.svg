@@ -13,7 +13,7 @@
    height="512"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.5 r10040"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="isa.svg">
   <defs
      id="defs4" />
@@ -25,16 +25,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.7148438"
-     inkscape:cx="256"
+     inkscape:cx="288.94761"
      inkscape:cy="256"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1875"
-     inkscape:window-height="1052"
+     inkscape:window-width="1497"
+     inkscape:window-height="1247"
      inkscape:window-x="-4"
-     inkscape:window-y="-3"
-     inkscape:window-maximized="1">
+     inkscape:window-y="0"
+     inkscape:window-maximized="0">
     <inkscape:grid
        type="xygrid"
        id="grid2985"
@@ -141,46 +141,6 @@
            x="144"
            id="tspan4415-2"
            sodipodi:role="line">+</tspan></text>
-    </g>
-    <g
-       id="g4678"
-       transform="translate(8,144)">
-      <rect
-         y="548.36218"
-         x="264"
-         height="112"
-         width="112"
-         id="rect2987-5"
-         style="color:#000000;fill:#ff7300;fill-opacity:0.21544716;fill-rule:nonzero;stroke:#ff8100;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      <text
-         sodipodi:linespacing="125%"
-         id="text3192-0-2"
-         y="612.36218"
-         x="320"
-         style="font-size:24px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-         xml:space="preserve"><tspan
-           y="612.36218"
-           x="320"
-           id="tspan3194-4-4"
-           sodipodi:role="line">JMP</tspan></text>
-      <rect
-         y="636.36218"
-         x="312"
-         height="15.999997"
-         width="16"
-         id="rect2987-98-5"
-         style="color:#000000;fill:#008e00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.77165353;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      <text
-         sodipodi:linespacing="125%"
-         id="text4413-6"
-         y="572.36218"
-         x="272"
-         style="font-size:24px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Sans"
-         xml:space="preserve"><tspan
-           y="572.36218"
-           x="272"
-           id="tspan4415-5"
-           sodipodi:role="line">-</tspan></text>
     </g>
     <g
        id="g4671"
@@ -464,12 +424,12 @@
          id="text3192-0"
          y="740.36218"
          x="192"
-         style="font-size:24px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         style="font-style:normal;font-weight:normal;font-size:24px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
            y="740.36218"
            x="192"
            id="tspan3194-4"
-           sodipodi:role="line">J?</tspan></text>
+           sodipodi:role="line">BRANCH</tspan></text>
       <path
          style="color:#000000;fill:#008e00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.77165353;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
          d="m 200,764.36218 0,16 -16,0 z"
@@ -701,7 +661,7 @@
            sodipodi:role="line">LOAD</tspan></text>
       <path
          transform="translate(-128,492.36218)"
-         d="m 288,280 c 0,4.41828 -3.58172,8 -8,8 -4.41828,0 -8,-3.58172 -8,-8 0,-4.41828 3.58172,-8 8,-8 4.41828,0 8,3.58172 8,8 z"
+         d="m 288,280 a 8,8 0 0 1 -8,8 8,8 0 0 1 -8,-8 8,8 0 0 1 8,-8 8,8 0 0 1 8,8 z"
          sodipodi:ry="8"
          sodipodi:rx="8"
          sodipodi:cy="280"
@@ -739,7 +699,7 @@
            id="tspan3194-7-7-8-9-2-1-0"
            sodipodi:role="line">STORE</tspan></text>
       <path
-         d="m 288,280 c 0,4.41828 -3.58172,8 -8,8 -4.41828,0 -8,-3.58172 -8,-8 0,-4.41828 3.58172,-8 8,-8 4.41828,0 8,3.58172 8,8 z"
+         d="m 288,280 a 8,8 0 0 1 -8,8 8,8 0 0 1 -8,-8 8,8 0 0 1 8,-8 8,8 0 0 1 8,8 z"
          sodipodi:ry="8"
          sodipodi:rx="8"
          sodipodi:cy="280"
