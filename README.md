@@ -12,16 +12,16 @@ Simple stack CPU using Head-and-tail instruction format, described in [Hedi01](h
 | 1 | LIT8  | --//--              | 8    | imm8                      | ( -- n )              |
 | 2 | LIT16 | --//--              | 16   | imm16                     | ( -- n )              |
 | 3 | LIT32 | --//--              | 32   | imm32                     | ( -- n )              |
-| 4 | B?    | conditional branch  | 4    | condition                 | ( addr -- )           |
+| 4 | BRANCH| branch              | 4    | condition                 | ( addr -- )           |
 | 5 |       |                     |      |                           |                       |
 | 6 |       |                     |      |                           |                       |
 | 7 | CALL  | subroutine call     |      |                           | ( addr -- )           | ( -- addr )
-| 8 | L?    | load from memory    | 4    | i8, i16, i32, u8, u16,... | ( addr -- data )      |
+| 8 | LOAD  | load from memory    | 4    | i8, i16, i32, u8, u16,... | ( addr -- data )      |
 | 9 | PICK  | copy Nth DS element | 4    | element number            | ( -- n )              |
 | A | DUP   | copy DS top         |      |                           | ( n -- n n )          |
 | B | R>    | move RS top -> DS   |      |                           | ( -- n )              | ( n -- )
-| C | S?    | store to the memory | 4    | i8, i16, i32              | ( data addr -- addr ) |
-| D | A?    |                     | 4    | operation: + - * >> <<    | ( a b -- c )          |
+| C | STORE | store to the memory | 4    | i8, i16, i32              | ( data addr -- addr ) |
+| D | ALU   | ALU operations      | 4    | operation: + - * >> <<    | ( a b -- c )          |
 | E | DROP  | DS pop              |      |                           | ( n -- )              |
 | F | >R    | move DS top -> RS   |      |                           | ( n -- )              | ( -- n )
 
@@ -29,18 +29,18 @@ Simple stack CPU using Head-and-tail instruction format, described in [Hedi01](h
 
 | N | name | description | extention
 |---|------|-------------|-----------
-| 0 | SLL  | shift left
-| 1 | SRL  | shift right
-| 2 | SRA  | shift right arithmetic
-| 3 | ADD  | add
-| 4 | SUB  | substract
-| 5 | XOR  | xor
-| 6 | OR   | or
-| 7 | AND  | and
-| 8 | SLT  | <
-| 9 | SLTU | < unsigned
+| 0 | SLL  | shift left  | I
+| 1 | SRL  | shift right |
+| 2 | SRA  | shift right arithmetic |
+| 3 | ADD  | add         |
+| 4 | SUB  | substract   |
+| 5 | XOR  | xor         |
+| 6 | OR   | or          |
+| 7 | AND  | and         |
+| 8 | SLT  | <           |
+| 9 | SLTU | < unsigned  |
 
-## Conditions
+## BRANCH Conditions
 
 | N | name | description   | extention
 |---|------|---------------|-----------
