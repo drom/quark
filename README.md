@@ -15,7 +15,7 @@ QUARK has integer data-path width 32, 64 or 128.
 It has two stack units data stack (DS) and return stack (RS) of base width and configurable depth.
 
 Each instruction has 4-bit `Head` part that defines following side effects:
- - Stack effect (DS and RS)
+ - Stack effect (DS and RS) change of the stack depth and marked position
  - Load / Store effect
  - Control flow change (branch)
  - Size of `Tail`
@@ -33,7 +33,7 @@ The following table describes
 | 4 | BRANCH | branch              | 4    | condition      | ( addr -- )           |
 | 5 |        |                     |      |                |                       |
 | 6 |        |                     |      |                |                       |
-| 7 | CALL   | subroutine call     |      |                | ( addr -- )           | ( -- addr )
+| 7 | CALL   | subroutine call     |      |                | ( addr -- )           | ( -- pc )
 | 8 | LOAD   | load from memory    | 4    | load type      | ( addr -- data )      |
 | 9 | PICK   | copy Nth DS element | 4    | element number | ( -- n )              |
 | A | DUP    | copy DS top         |      |                | ( n -- n n )          |
@@ -51,9 +51,9 @@ Sign extended immediate value that will be pushed into DS.
 
 | N | name | description
 |---|------|------------
-| 0 |      | unconditional
+| 0 | JMP  | unconditional
 | 1 | BDZ  | second element of DS is equal 0
-| 2 | BRZ  | second element on RS is equal 0
+| 2 | DRZ  | top element on RS is equal 0
 
 ## Load type
 
