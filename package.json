@@ -1,0 +1,28 @@
+{
+  "name": "quark",
+  "version": "0.0.1",
+  "description": "quark isa",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "eslint lib/*.js && mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drom/quark.git"
+  },
+  "keywords": [
+    "isa"
+  ],
+  "author": "Aliaksei Chapyzhenka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drom/quark/issues"
+  },
+  "homepage": "https://github.com/drom/quark#readme",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "eslint": "^1.10.3",
+    "istanbul": "^0.4.1",
+    "mocha": "^2.3.4"
+  }
+}
