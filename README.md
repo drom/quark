@@ -94,16 +94,36 @@ isa128: 0 1 2 3 4
 
 ## ALU
 
-| N | name | description
-|---|------|------------
-| 0 | SLL  | shift left
-| 1 | SRL  | shift right
-| 2 | SRA  | shift right arithmetic
-| 3 | ADD  | add
-| 4 | SUB  | substract
-| 4 | SSUB | swap substract   |
-| 5 | XOR  | xor
-| 6 | OR   | or
-| 7 | AND  | and
-| 8 | SLT  | <
-| 9 | SLTU | < unsigned
+| N | name  | description
+|---|-------|------------
+| 0 | add   | sign-agnostic addition
+| 1 | sub   | sign-agnostic subtraction
+| 2 | ssub  | swap and sign-agnostic subtraction
+| 3 | and   | sign-agnostic bitwise and
+| 4 | or    | sign-agnostic bitwise inclusive or
+| 5 | xor   | sign-agnostic bitwise exclusive or
+| 6 | shl   | sign-agnostic shift left
+| 7 | shr_u | zero-replicating (logical) shift right
+| 8 | shr_s | sign-replicating (arithmetic) shift right
+| 9 | rotl  | sign-agnostic rotate left
+| 10| rotr  | sign-agnostic rotate right
+|   |       |
+|   | mul   | sign-agnostic multiplication
+|   | div_s | signed division (result is truncated toward zero)
+|   | div_u | unsigned division (result is floored)
+|   | rem_s | signed remainder (result has the sign of the dividend)
+|   | rem_u | unsigned remainder
+|   | eq    | sign-agnostic compare equal
+|   | ne    | sign-agnostic compare unequal
+|   | lt_s  | signed less than
+|   | le_s  | signed less than or equal
+|   | lt_u  | unsigned less than
+|   | le_u  | unsigned less than or equal
+|   | gt_s  | signed greater than
+|   | ge_s  | signed greater than or equal
+|   | gt_u  | unsigned greater than
+|   | ge_u  | unsigned greater than or equal
+|   | clz   | sign-agnostic count leading zero bits (All zero bits are considered leading if the value is zero)
+|   | ctz   | sign-agnostic count trailing zero bits (All zero bits are considered trailing if the value is zero)
+|   | popcnt| sign-agnostic count number of one bits
+|   | eqz   | compare equal to zero (return 1 if operand is zero, 0 otherwise)
