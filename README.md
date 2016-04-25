@@ -57,27 +57,40 @@ Sign extended immediate value that will be pushed into DS.
 
 ## Load type
 
-| N | name  | description
-|---|-------|------------
-| 0 | Li8   | load byte
-| 1 | Li16  | load 2 byte
-| 2 | Li32  | load 4 byte
-| 3 | Lu8   | load byte unsigned
-| 4 | Lu16  | load 2 byte unsigned
-| 5 | Li64  |
-| 6 | Li128 |
-| 7 | Lu64  |
-| 8 | Lu128 |
+| N | name     | description
+|---|----------|------------
+| 0 | load8_s  | load 1 byte with sign-extention
+| 1 | load8_u  | load 1 byte zero extended
+| 2 | load16_s | load 2 bytes with sign-extention
+| 3 | load16_u | load 2 bytes zero extended
+| 4 | load32_s | load 4 bytes with sign-extention
+| 5 | load32_u | load 4 bytes zero extended
+| 6 | load64_s | load 8 bytes with sign-extention
+| 7 | load64_u | load 8 bytes zero extended
+| 8 | load128  | load 16 bytes
+
+```
+isa32:  0 1 2 3 4
+isa64:  0 1 2 3 4 5 6
+isa128: 0 1 2 3 4 5 6 7 8
+```
 
 ## Stores
 
-| N | name  | description
-|---|-------|------------
-| 0 | Si8   | store byte
-| 1 | Si16  | store 2 bytes
-| 2 | Si32  | store 4 bytes
-| 3 | Si64  | store 8 bytes
-| 4 | Si128 | store 16 bytes
+| N | name     | description
+|---|----------|------------
+| 0 | store8   | store 1 byte
+| 1 | store16  | store 2 bytes
+| 2 | store32  | store 4 bytes
+| 3 | store64  | store 8 bytes
+| 4 | store128 | store 16 bytes
+
+```
+isa32:  0 1 2
+isa64:  0 1 2 3
+isa128: 0 1 2 3 4
+```
+
 
 ## ALU
 
