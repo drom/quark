@@ -6,6 +6,10 @@ QUARK is a simple dual-stack CPU instruction set architecture (ISA) that can be 
 
 QUARK uses Head-and-tail instruction format, described in [Hedi01](http://www.cs.berkeley.edu/~krste/papers/hat-cases2001.pdf)
 
+64-bit instraction word
+
+![instr64](https://rawgit.com/drom/quark/master/instr64.svg)
+
 ![ISA](https://rawgit.com/drom/quark/master/isa.svg)
 
 ## Instructions
