@@ -8,7 +8,7 @@ QUARK uses Head-and-tail instruction format, described in [Hedi01](http://www.cs
 
 64-bit instraction word
 
-![instr64](https://rawgit.com/drom/quark/master/instr64.svg)
+![instr64](https://rawgit.com/drom/quark/master/instr64_be.svg)
 
 ![ISA](https://rawgit.com/drom/quark/master/isa.svg)
 
