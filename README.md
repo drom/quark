@@ -10,6 +10,12 @@ QUARK uses Head-and-tail instruction format, described in [Hedi01](http://www.cs
 
 ![instr64](https://rawgit.com/drom/quark/master/instr64_be.svg)
 
+  - 0..15 head slots
+  - [63:4] head range
+  - 0..7 tail slots
+  - [63:16] tail range
+  - [63,59,55,51,47,..,23] (11) MSB positions
+
 ![ISA](https://rawgit.com/drom/quark/master/isa.svg)
 
 ## Instructions
