@@ -16,6 +16,8 @@ QUARK uses Head-and-tail instruction format, described in [Hedi01](http://www.cs
   - [63:16] tail range
   - [63,59,55,51,47,..,23] (11) MSB positions
 
+![instr64](https://rawgit.com/drom/quark/master/instr64_cases.svg)
+
 ![ISA](https://rawgit.com/drom/quark/master/isa.svg)
 
 ## Instructions
