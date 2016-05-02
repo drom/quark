@@ -1,15 +1,17 @@
-module tail_offset (ir, pc, offset, len);
+module tail_offset (ir, pc, offset, len, imm);
 input [63:0] ir;
 input [3:0] pc;
 output [3:0] offset;
 output [2:0] len;
+output  [31:0] imm;
 
 reg  [3:0]
     ir1111, ir1110, ir1101, ir1100, ir1011, ir1010, ir1001, ir1000,
     ir0111, ir0110, ir0101, ir0100, ir0011, ir0010, ir0001, ir0000;
 
 reg  [3:0]
-    of1111, of1110, of1101, of1100, of1011, of1010, of1001, of1000,
+    // of1111, of1110,
+    of1101, of1100, of1011, of1010, of1001, of1000,
     of0111, of0110, of0101, of0100, of0011, of0010, of0001;
     //, of0000;
 
@@ -21,6 +23,12 @@ wire [2:0]
 
 wire [3:0] offset;
 wire [2:0] len;
+
+
+wire  [3:0] imm3_0, imm7_4;
+wire  [7:0] imm15_8;
+wire [15:0] imm31_16;
+reg  [31:0] imm;
 
 // tail_length u_len1111 (.ir(ir1111), .len(len1111));
 tail_length u_len1110 (.ir(ir1110), .len(len1110));
@@ -48,8 +56,8 @@ end
 
 
 always @ (
-    // len1111,
-    len1110, len1101, len1100, len1011, len1010, len1001, len1000,
+    // len1111, len1110, len1101,
+    len1100, len1011, len1010, len1001, len1000,
     len0111, len0110, len0101, len0100, len0011, len0010, len0001
     //, len0000
 ) begin
@@ -66,8 +74,8 @@ always @ (
     of1011 = of1010 + len1010;
     of1100 = of1011 + len1011;
     of1101 = of1100 + len1100;
-    of1110 = of1101 + len1101;
-    of1111 = of1110 + len1110;
+    // of1110 = of1101 + len1101;
+    // of1111 = of1110 + len1110;
 end
 
 mux16 #(.W(4)) u_offset_mux (
@@ -85,9 +93,9 @@ mux16 #(.W(4)) u_offset_mux (
     .i1010(of1011),
     .i1011(of1100),
     .i1100(of1101),
-    .i1101(of1110),
-    .i1110(of1111),
-    .i1111(of1111),
+    .i1101(4'b????),
+    .i1110(4'b????),
+    .i1111(4'b????),
     .o(offset)
 );
 
@@ -111,5 +119,28 @@ mux16 #(.W(3)) u_len_mux (
     .i1111(len1111),
     .o(len)
 );
+
+mux16 #(.W(4)) imm3_0_mux (
+    .sel(offset + len - 1),
+    .i0000(ir1111),
+    .i0001(ir1110),
+    .i0010(ir1101),
+    .i0011(ir1100),
+    .i0100(ir1011),
+    .i0101(ir1010),
+    .i0110(ir1001),
+    .i0111(ir1000),
+    .i1000(ir0111),
+    .i1001(ir0110),
+    .i1010(ir0101),
+    .i1011(ir0100),
+    .i1100(4'b????),
+    .i1101(4'b????),
+    .i1110(4'b????),
+    .i1111(4'b????),
+    .o(imm3_0)
+);
+
+always @ (imm31_16, imm15_8, imm7_4, imm3_0) imm = {imm31_16, imm15_8, imm7_4, imm3_0};
 
 endmodule
