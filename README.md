@@ -10,7 +10,7 @@ QUARK uses Head-and-tail instruction format, described in [Hedi01](http://www.cs
 
 ## Instructions
 
-QUARK has integer data-path width 32, 64 or 128.
+QUARK has integer data-path width 16, 32, 64 or 128. (isa16, isa32, isa64, isa128)
 
 It has two stack units data stack (DS) and return stack (RS) of base width and configurable depth.
 
@@ -70,6 +70,7 @@ Sign extended immediate value that will be pushed into DS.
 | 8 | load128  | load 16 bytes
 
 ```
+isa16:  0 1 2
 isa32:  0 1 2 3 4
 isa64:  0 1 2 3 4 5 6
 isa128: 0 1 2 3 4 5 6 7 8
@@ -86,6 +87,7 @@ isa128: 0 1 2 3 4 5 6 7 8
 | 4 | store128 | store 16 bytes
 
 ```
+isa16:  0 1
 isa32:  0 1 2
 isa64:  0 1 2 3
 isa128: 0 1 2 3 4
@@ -128,7 +130,7 @@ isa128: 0 1 2 3 4
 |   | popcnt| sign-agnostic count number of one bits
 |   | eqz   | compare equal to zero (return 1 if operand is zero, 0 otherwise)
 
-## 32-bit ISA / 64-bit instruction word
+## isa32 / 64-bit instruction word
 
 - 0..15 head slots
 - [63:4] head range
