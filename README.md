@@ -6,18 +6,6 @@ QUARK is a simple dual-stack CPU instruction set architecture (ISA) that can be 
 
 QUARK uses Head-and-tail instruction format, described in [Hedi01](http://www.cs.berkeley.edu/~krste/papers/hat-cases2001.pdf)
 
-64-bit instraction word
-
-![instr64](https://rawgit.com/drom/quark/master/instr64_be.svg)
-
-  - 0..15 head slots
-  - [63:4] head range
-  - 0..7 tail slots
-  - [63:16] tail range
-  - [63,59,55,51,47,..,23] (11) MSB positions
-
-![instr64](https://rawgit.com/drom/quark/master/instr64_cases.svg)
-
 ![ISA](https://rawgit.com/drom/quark/master/isa.svg)
 
 ## Instructions
@@ -139,3 +127,23 @@ isa128: 0 1 2 3 4
 |   | ctz   | sign-agnostic count trailing zero bits (All zero bits are considered trailing if the value is zero)
 |   | popcnt| sign-agnostic count number of one bits
 |   | eqz   | compare equal to zero (return 1 if operand is zero, 0 otherwise)
+
+## 32-bit ISA / 64-bit instruction word
+
+- 0..15 head slots
+- [63:4] head range
+- 0..7 tail slots
+- [63:16] tail range
+- [63,59,55,51,47,..,23] (11) MSB positions
+
+### LE
+
+![instr64](https://rawgit.com/drom/quark/master/instr64.svg)
+
+### BE
+
+![instr64](https://rawgit.com/drom/quark/master/instr64_be.svg)
+
+### Examples
+
+![instr64](https://rawgit.com/drom/quark/master/instr64_cases.svg)
