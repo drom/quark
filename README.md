@@ -144,6 +144,6 @@ isa128: 0 1 2 3 4
 
 ![instr64](https://rawgit.com/drom/quark/master/instr64_be.svg)
 
-### Examples
+### BE Examples
 
 ![instr64](https://rawgit.com/drom/quark/master/instr64_cases.svg)
