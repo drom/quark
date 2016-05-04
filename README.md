@@ -30,7 +30,7 @@ The following table describes
 | 1 | LIT8   | --//--              | 8    | imm8           | ( -- n )              |
 | 2 | LIT16  | --//--              | 16   | imm16          | ( -- n )              |
 | 3 | LIT32  | --//--              | 32   | imm32          | ( -- n )              |
-| 4 | BRANCH | branch              | 4    | condition      | ( addr -- )           |
+| 4 | BRANCH | branch              | 4    | kind           | ( addr -- )           |
 | 5 |        |                     |      |                |                       |
 | 6 |        |                     |      |                |                       |
 | 7 | CALL   | subroutine call     |      |                | ( addr -- )           | ( -- pc )
@@ -47,7 +47,7 @@ The following table describes
 
 Sign extended immediate value that will be pushed into DS.
 
-## BRANCH Conditions
+## BRANCH Kinds
 
 | N | name | description
 |---|------|------------
