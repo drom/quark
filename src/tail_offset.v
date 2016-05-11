@@ -1,9 +1,22 @@
-module tail_offset (ir, pc, offset, len, imm);
+module tail_offset (
+    ir,
+    // pc,
+    // offset,
+    // len,
+    // imm,
+    /* of1111, of1110, */
+    of1101, of1100, of1011, of1010, of1001, of1000, of0111, of0110, of0101, of0100, of0011, of0010, of0001
+    /* , of0000 */
+);
 input [63:0] ir;
-input [3:0] pc;
-output [3:0] offset;
-output [2:0] len;
-output  [31:0] imm;
+// input [3:0] pc;
+// output [3:0] offset;
+output [3:0] // of1111, of1110,
+    of1101, of1100, of1011, of1010, of1001, of1000,
+    of0111, of0110, of0101, of0100, of0011, of0010, of0001;
+    // , of0000;
+// output [2:0] len;
+// output  [31:0] imm;
 
 reg  [3:0]
     ir1111, ir1110, ir1101, ir1100, ir1011, ir1010, ir1001, ir1000,
@@ -12,23 +25,30 @@ reg  [3:0]
 reg  [3:0]
     // of1111, of1110,
     of1101, of1100, of1011, of1010, of1001, of1000,
-    of0111, of0110, of0101, of0100, of0011, of0010, of0001;
+    of0111, of0110, of0101, of0100, of0011, of0010, of0001,
+
+    of12_11, of10_9, of8_7, of6_5, of4_3, of2_1,
+    of12_9, of11_9, of8_5, of7_5, of4_1, of3_1,
+
+    of8_1, of7_1, of6_1, of5_1,
+    of12_1, of11_1, of10_1, of9_1;
+
     //, of0000;
 
-wire [2:0]
+wire [3:0]
     // len1111,
     len1110, len1101, len1100, len1011, len1010, len1001, len1000,
     len0111, len0110, len0101, len0100, len0011, len0010, len0001;
     //, len0000;
 
 wire [3:0] offset;
-wire [2:0] len;
+// wire [2:0] len;
 
 
-wire  [3:0] imm3_0, imm7_4;
-wire  [7:0] imm15_8;
-wire [15:0] imm31_16;
-reg  [31:0] imm;
+// wire  [3:0] imm3_0, imm7_4;
+// wire  [7:0] imm15_8;
+// wire [15:0] imm31_16;
+// reg  [31:0] imm;
 
 // tail_length u_len1111 (.ir(ir1111), .len(len1111));
 tail_length u_len1110 (.ir(ir1110), .len(len1110));
@@ -61,7 +81,46 @@ always @ (
     len0111, len0110, len0101, len0100, len0011, len0010, len0001
     //, len0000
 ) begin
+
+    of2_1   = len0010 + len0001;
+    of4_3   = len0100 + len0011;
+    of6_5   = len0110 + len0101;
+    of8_7   = len1000 + len0111;
+    of10_9  = len1010 + len1001;
+    of12_11 = len1100 + len1011;
+
+    of3_1   = len0011 + of2_1;
+    of4_1   = of4_3   + of2_1;
+    of7_5   = len0111 + of6_5;
+    of8_5   = of8_7   + of6_5;
+    of11_9  = len1011 + of10_9;
+    of12_9  = of12_11 + of10_9;
+
+    of5_1   = len0101 + of4_1;
+    of6_1   = of6_5   + of4_1;
+    of7_1   = of7_5   + of4_1;
+    of8_1   = of8_5   + of4_1;
+
+    of9_1   = len1001 + of8_1;
+    of10_1  = of10_9  + of8_1;
+    of11_1  = of11_9  + of8_1;
+    of12_1  = of12_9  + of8_1;
+
     of0001 = 0;
+    of0010 = len0001;
+    of0011 = of2_1;
+    of0100 = of3_1;
+    of0101 = of4_1;
+    of0110 = of5_1;
+    of0111 = of6_1;
+    of1000 = of7_1;
+    of1001 = of8_1;
+    of1010 = of9_1;
+    of1011 = of10_1;
+    of1100 = of11_1;
+    of1101 = of12_1;
+
+/*
     of0010 = of0001 + len0001;
     of0011 = of0010 + len0010;
     of0100 = of0011 + len0011;
@@ -74,10 +133,12 @@ always @ (
     of1011 = of1010 + len1010;
     of1100 = of1011 + len1011;
     of1101 = of1100 + len1100;
+*/
     // of1110 = of1101 + len1101;
     // of1111 = of1110 + len1110;
 end
 
+/*
 mux16 #(.W(4)) u_offset_mux (
     .sel(pc),
     .i0000(of0001),
@@ -98,7 +159,9 @@ mux16 #(.W(4)) u_offset_mux (
     .i1111(4'b????),
     .o(offset)
 );
+*/
 
+/*
 mux16 #(.W(3)) u_len_mux (
     .sel(pc),
     .i0000(len0001),
@@ -119,9 +182,11 @@ mux16 #(.W(3)) u_len_mux (
     .i1111(len1111),
     .o(len)
 );
+*/
 
+/*
 mux16 #(.W(4)) imm3_0_mux (
-    .sel(offset + len - 1),
+    .sel(offset),
     .i0000(ir1111),
     .i0001(ir1110),
     .i0010(ir1101),
@@ -140,7 +205,9 @@ mux16 #(.W(4)) imm3_0_mux (
     .i1111(4'b????),
     .o(imm3_0)
 );
-
+*/
+/*
 always @ (imm31_16, imm15_8, imm7_4, imm3_0) imm = {imm31_16, imm15_8, imm7_4, imm3_0};
+*/
 
 endmodule
