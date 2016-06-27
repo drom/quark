@@ -1,141 +1,49 @@
-module tail_offset (
-    ir,
-    // pc,
-    // offset,
-    // len,
-    // imm,
-    /* of1111, of1110, */
-    of1101, of1100, of1011, of1010, of1001, of1000, of0111, of0110, of0101, of0100, of0011, of0010, of0001
-    /* , of0000 */
-);
-input [63:0] ir;
-// input [3:0] pc;
-// output [3:0] offset;
-output [3:0] // of1111, of1110,
-    of1101, of1100, of1011, of1010, of1001, of1000,
-    of0111, of0110, of0101, of0100, of0011, of0010, of0001;
-    // , of0000;
-// output [2:0] len;
-// output  [31:0] imm;
+module tail_offset (ir, ${ range(16).map(e => 'toff_' + e + '_0').join(', ') });
 
-reg  [3:0]
-    ir1111, ir1110, ir1101, ir1100, ir1011, ir1010, ir1001, ir1000,
-    ir0111, ir0110, ir0101, ir0100, ir0011, ir0010, ir0001, ir0000;
+input  [63:0] ir;
+output [3:0] ${
+    range(16)
+    .map(e => 'toff_' + e + '_0')
+    .join(', ')
+};
 
-reg  [3:0]
-    // of1111, of1110,
-    of1101, of1100, of1011, of1010, of1001, of1000,
-    of0111, of0110, of0101, of0100, of0011, of0010, of0001,
+reg [3:0] ${ range(16).map(e => 'toff_' + e + '_' + e).join(', ') };
 
-    of12_11, of10_9, of8_7, of6_5, of4_3, of2_1,
-    of12_9, of11_9, of8_5, of7_5, of4_1, of3_1,
+reg [3:0] ${ range(16).map(e => 'ir' + e ).join(', ') };
+<% var res = [];
+    sklansky(12, e => {
+        res.push('toff_' + e.res.hi + '_' + e.res.lo);
+    });
+%>
+reg [3:0] ${ res.join(', ') };
 
-    of8_1, of7_1, of6_1, of5_1,
-    of12_1, of11_1, of10_1, of9_1;
+wire [3:0] ${ range(1, 15).map(e => 'tlen_' + e).join(', ') };
 
-    //, of0000;
+${ range(1, 14)
+    .map(e => 'tail_length u_len' + e + ' (.ir(ir' + e + '), .len(tlen_' + e + '));' )
+    .join('\n')
+}
 
-wire [3:0]
-    // len1111,
-    len1110, len1101, len1100, len1011, len1010, len1001, len1000,
-    len0111, len0110, len0101, len0100, len0011, len0010, len0001;
-    //, len0000;
+always @ (ir) { ${
+    rangeRight(16)
+    .map(e => 'ir' + e)
+    .join(', ')
+} } = ir;
 
-wire [3:0] offset;
-// wire [2:0] len;
-
-
-// wire  [3:0] imm3_0, imm7_4;
-// wire  [7:0] imm15_8;
-// wire [15:0] imm31_16;
-// reg  [31:0] imm;
-
-// tail_length u_len1111 (.ir(ir1111), .len(len1111));
-tail_length u_len1110 (.ir(ir1110), .len(len1110));
-tail_length u_len1101 (.ir(ir1101), .len(len1101));
-tail_length u_len1100 (.ir(ir1100), .len(len1100));
-tail_length u_len1011 (.ir(ir1011), .len(len1011));
-tail_length u_len1010 (.ir(ir1010), .len(len1010));
-tail_length u_len1001 (.ir(ir1001), .len(len1001));
-tail_length u_len1000 (.ir(ir1000), .len(len1000));
-tail_length u_len0111 (.ir(ir0111), .len(len0111));
-tail_length u_len0110 (.ir(ir0110), .len(len0110));
-tail_length u_len0101 (.ir(ir0101), .len(len0101));
-tail_length u_len0100 (.ir(ir0100), .len(len0100));
-tail_length u_len0011 (.ir(ir0011), .len(len0011));
-tail_length u_len0010 (.ir(ir0010), .len(len0010));
-tail_length u_len0001 (.ir(ir0001), .len(len0001));
-// tail_length u_len0000 (.ir(ir0000), .len(len0000));
-
-always @ (ir) begin
-    {
-        ir1111, ir1110, ir1101, ir1100, ir1011, ir1010, ir1001, ir1000,
-        ir0111, ir0110, ir0101, ir0100, ir0011, ir0010, ir0001, ir0000
-    } = ir;
-end
-
-
-always @ (
-    // len1111, len1110, len1101,
-    len1100, len1011, len1010, len1001, len1000,
-    len0111, len0110, len0101, len0100, len0011, len0010, len0001
-    //, len0000
-) begin
-
-    of2_1   = len0010 + len0001;
-    of4_3   = len0100 + len0011;
-    of6_5   = len0110 + len0101;
-    of8_7   = len1000 + len0111;
-    of10_9  = len1010 + len1001;
-    of12_11 = len1100 + len1011;
-
-    of3_1   = len0011 + of2_1;
-    of4_1   = of4_3   + of2_1;
-    of7_5   = len0111 + of6_5;
-    of8_5   = of8_7   + of6_5;
-    of11_9  = len1011 + of10_9;
-    of12_9  = of12_11 + of10_9;
-
-    of5_1   = len0101 + of4_1;
-    of6_1   = of6_5   + of4_1;
-    of7_1   = of7_5   + of4_1;
-    of8_1   = of8_5   + of4_1;
-
-    of9_1   = len1001 + of8_1;
-    of10_1  = of10_9  + of8_1;
-    of11_1  = of11_9  + of8_1;
-    of12_1  = of12_9  + of8_1;
-
-    of0001 = 0;
-    of0010 = len0001;
-    of0011 = of2_1;
-    of0100 = of3_1;
-    of0101 = of4_1;
-    of0110 = of5_1;
-    of0111 = of6_1;
-    of1000 = of7_1;
-    of1001 = of8_1;
-    of1010 = of9_1;
-    of1011 = of10_1;
-    of1100 = of11_1;
-    of1101 = of12_1;
-
-/*
-    of0010 = of0001 + len0001;
-    of0011 = of0010 + len0010;
-    of0100 = of0011 + len0011;
-    of0101 = of0100 + len0100;
-    of0110 = of0101 + len0101;
-    of0111 = of0110 + len0110;
-    of1000 = of0111 + len0111;
-    of1001 = of1000 + len1000;
-    of1010 = of1001 + len1001;
-    of1011 = of1010 + len1010;
-    of1100 = of1011 + len1011;
-    of1101 = of1100 + len1100;
-*/
-    // of1110 = of1101 + len1101;
-    // of1111 = of1110 + len1110;
+always @ ( ${
+    range(12).map(e => 'toff_' + e + '_' + e).join(', ')
+} )
+<% var res = [];
+    sklansky(12, e => {
+        res.push(
+            '  toff_' + e.res.hi + '_' + e.res.lo +
+            ' = toff_' + e.left.hi + '_' + e.left.lo +
+            ' + toff_' + e.right.hi + '_' + e.right.lo + ';'
+        );
+    });
+%>
+begin
+${ res.join('\n') };
 end
 
 /*

@@ -22,7 +22,12 @@
   "devDependencies": {
     "chai": "^3.4.1",
     "eslint": "^1.10.3",
+    "fs-extra": "^0.30.0",
     "istanbul": "^0.4.1",
-    "mocha": "^2.3.4"
+    "lodash.range": "^3.1.5",
+    "lodash.rangeright": "^4.0.5",
+    "lodash.template": "^4.2.4",
+    "mocha": "^2.3.4",
+    "yargs": "^4.6.0"
   }
 }
