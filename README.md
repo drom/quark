@@ -149,3 +149,7 @@ isa128: 0 1 2 3 4
 ### LE Examples
 
 ![instr64](https://rawgit.com/drom/quark/master/instr64_cases.svg)
+
+### RISC-V extension
+
+https://beta.observablehq.com/@drom/quark
