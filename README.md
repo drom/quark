@@ -140,15 +140,15 @@ isa128: 0 1 2 3 4
 
 ### LE
 
-![instr64](https://rawgit.com/drom/quark/master/instr64_LE.svg)
+![instr64](instr64_LE.svg)
 
 ### BE
 
-![instr64](https://rawgit.com/drom/quark/master/instr64_BE.svg)
+![instr64](instr64_BE.svg)
 
 ### LE Examples
 
-![instr64](https://rawgit.com/drom/quark/master/instr64_cases.svg)
+![instr64](instr64_cases.svg)
 
 ### RISC-V extension
 
