@@ -6,44 +6,42 @@ QUARK is a simple dual-stack CPU instruction set architecture (ISA) that can be 
 
 QUARK uses Head-and-tail instruction format, described in [Hedi01](http://www.cs.berkeley.edu/~krste/papers/hat-cases2001.pdf)
 
-![ISA](https://rawgit.com/drom/quark/master/isa.svg)
+![ISA](./isa.svg)
 
 ## Instructions
 
-QUARK has integer data-path width 16, 32, 64 or 128. (isa16, isa32, isa64, isa128)
+QUARK has integer data-path width 16, 32, 64. (isa16, isa32, isa64)
 
 It has two stack units data stack (DS) and return stack (RS) of base width and configurable depth.
 
 Each instruction has 4-bit `Head` part that defines following side effects:
- - Stack effect (DS and RS) change of the stack depth and marked position
- - Load / Store effect
- - Control flow change (branch)
- - Size of `Tail`
+ - DS stack effect (red symbol in top/left corner) (+) push, (-) pop, ( ) no effect
+ - RS stack effect (blue symbol in bottom/right corner) (+) push, (-) pop, ( ) no effect
+ - Load / Store effect (blue circle in bottom/left corner)
+ - Control flow change (green squre on the botom)
+ - Size of `Tail` (red squre in top/right corner)
 
 Each instruction has 4, 8, 16 or 32 bit `Tail`.
 
-The following table describes  
+The following table describes
 
 | N | name   | description         | tail | tail           | DS                    | RS
 |---| ------ | ------------------- | ---- | -------------- | --------------------- | --------
-| 0 | LIT4   | push literal to DS  | 4    | imm4           | ( -- n )              |
-| 1 | LIT8   | --//--              | 8    | imm8           | ( -- n )              |
-| 2 | LIT16  | --//--              | 16   | imm16          | ( -- n )              |
-| 3 | LIT32  | --//--              | 32   | imm32          | ( -- n )              |
-| 4 | BRANCH | branch              | 4    | kind           | ( addr -- )           |
-| 5 |        |                     |      |                |                       |
-| 6 |        |                     |      |                |                       |
-| 7 | CALL   | subroutine call     |      |                | ( addr -- )           | ( -- pc )
-| 8 | LOAD   | load from memory    | 4    | load type      | ( addr -- data )      |
-| 9 | PICK   | copy Nth DS element | 4    | element number | ( -- n )              |
-| A | DUP    | copy DS top         |      |                | ( n -- n n )          |
-| B | R>     | move RS top -> DS   |      |                | ( -- n )              | ( n -- )
-| C | STORE  | store to the memory | 4    | store type     | ( data addr -- addr ) |
-| D | ALU    | ALU operations      | 4    | operation      | ( a b -- c )          |
-| E | DROP   | DS pop              |      |                | ( n -- )              |
-| F | >R     | move DS top -> RS   |      |                | ( n -- )              | ( -- n )
+| 0 |        |                     |      |                |                       |
+| 3 | PICK   | copy Nth DS element | 4    | element number | ( -- n )              |
+| 4 | LIT4   | push literal to DS  | 4    | imm4           | ( -- n )              |
+| 5 | LIT8   | --//--              | 8    | imm8           | ( -- n )              |
+| 6 | LIT16  | --//--              | 16   | imm16          | ( -- n )              |
+| 7 | LIT32  | --//--              | 32   | imm32          | ( -- n )              |
+| 8 | STORE  | store to the memory | 4    | store type     | ( data addr -- addr ) |
+| 9 | LOAD   | load from memory    | 4    | load type      | ( addr -- data )      |
+| A | ALU    | ALU operations      | 4    | operation      | ( a b -- c )          |
+| B | BRANCH | branch              | 4    | kind           | ( addr -- )           |
+| C | CALL   | subroutine call     |      |                | ( addr -- )           | ( -- pc )
+| D | >R     | move DS top -> RS   |      |                | ( n -- )              | ( -- n )
+| E | R>     | move RS top -> DS   |      |                | ( -- n )              | ( n -- )
 
-## imm4, imm8, imm16, imm32
+## imm4, imm8, imm16, imm32, imm64
 
 Sign extended immediate value that will be pushed into DS.
 
@@ -67,13 +65,11 @@ Sign extended immediate value that will be pushed into DS.
 | 5 | load32_u | load 4 bytes zero extended
 | 6 | load64_s | load 8 bytes with sign-extention
 | 7 | load64_u | load 8 bytes zero extended
-| 8 | load128  | load 16 bytes
 
 ```
-isa16:  0 1 2
-isa32:  0 1 2 3 4
-isa64:  0 1 2 3 4 5 6
-isa128: 0 1 2 3 4 5 6 7 8
+isa16:  0 1 2 3
+isa32:  0 1 2 3 4 5
+isa64:  0 1 2 3 4 5 6 7
 ```
 
 ## Stores
@@ -84,13 +80,11 @@ isa128: 0 1 2 3 4 5 6 7 8
 | 1 | store16  | store 2 bytes
 | 2 | store32  | store 4 bytes
 | 3 | store64  | store 8 bytes
-| 4 | store128 | store 16 bytes
 
 ```
 isa16:  0 1
 isa32:  0 1 2
 isa64:  0 1 2 3
-isa128: 0 1 2 3 4
 ```
 
 
@@ -98,17 +92,18 @@ isa128: 0 1 2 3 4
 
 | N | name  | description
 |---|-------|------------
-| 0 | add   | sign-agnostic addition
-| 1 | sub   | sign-agnostic subtraction
-| 2 | ssub  | swap and sign-agnostic subtraction
-| 3 | and   | sign-agnostic bitwise and
-| 4 | or    | sign-agnostic bitwise inclusive or
-| 5 | xor   | sign-agnostic bitwise exclusive or
-| 6 | shl   | sign-agnostic shift left
-| 7 | shr_u | zero-replicating (logical) shift right
-| 8 | shr_s | sign-replicating (arithmetic) shift right
-| 9 | rotl  | sign-agnostic rotate left
-| 10| rotr  | sign-agnostic rotate right
+| 0 | drop  | drop DS top
+| 1 | add   | sign-agnostic addition
+| 2 | sub   | sign-agnostic subtraction
+| 3 | ssub  | swap and sign-agnostic subtraction
+| 4 | and   | sign-agnostic bitwise and
+| 5 | or    | sign-agnostic bitwise inclusive or
+| 6 | xor   | sign-agnostic bitwise exclusive or
+| 7 | shl   | sign-agnostic shift left
+| 8 | shr_u | zero-replicating (logical) shift right
+| 9 | shr_s | sign-replicating (arithmetic) shift right
+| 10| rotl  | sign-agnostic rotate left
+| 11| rotr  | sign-agnostic rotate right
 |   |       |
 |   | mul   | sign-agnostic multiplication
 |   | div_s | signed division (result is truncated toward zero)
@@ -140,15 +135,15 @@ isa128: 0 1 2 3 4
 
 ### LE
 
-![instr64](instr64_LE.svg)
+![instr64](./instr64_LE.svg)
 
 ### BE
 
-![instr64](instr64_BE.svg)
+![instr64](./instr64_BE.svg)
 
 ### LE Examples
 
-![instr64](instr64_cases.svg)
+![instr64](./instr64_cases.svg)
 
 ### RISC-V extension
 
